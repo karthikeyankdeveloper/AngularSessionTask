@@ -1,0 +1,34 @@
+<div>
+  <table>
+
+    <thead>
+      <tr>
+        <th>EMP Id</th>
+        <th>EMP Name</th>
+        <th>Designation</th>
+        <th>Location</th>
+        <th>Address</th>
+        @if(salary) {
+          <th>Salary</th>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (employeedetails of employeeDetails; track $index) {
+        <tr class="tabledetails">
+          <td>{{employeedetails.empID}}</td>
+          <td>{{employeedetails.name}}</td>
+          <td>{{employeedetails.designation}}</td>
+          <td>{{employeedetails.location}}</td>
+          <td>{{employeedetails.address}}</td>
+          @if(salary) {
+            <td>{{employeedetails.salary}}</td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+  <button (click)="toggle()" class="btn">{{salary?'Hide':'Show'}}</button>
+
+</div>

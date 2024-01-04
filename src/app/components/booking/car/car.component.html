@@ -1,0 +1,78 @@
+<div class="form">
+  <h1>Car Reservation Form</h1>
+
+  <form action="" [formGroup]="hotelform" (ngSubmit)="hotelform.valid && submitHotelform()">
+
+    <div class="form-control">
+      <label for="">Car Type</label>
+      <div class="select">
+      <select formControlName="room" (change)="selectRoom(hotelform.controls['room'].value)">
+        <option value="" disabled selected>Select Car</option>
+        <option value="A/C room">A/C Car</option>
+        <option value="Non A/C room">Non A/C Car</option>
+      </select>
+
+      @if (hotelform.controls['room'].errors?.['required'] && hotelform.controls['room'].touched) {
+       <small>Car Type is required</small>
+      }
+    </div>
+    </div>
+    <div class="form-control">
+      <label for="">Number of seat</label>
+      <div>
+      <select formControlName="number" (change)="selectnoRoom(hotelform.controls['number'].value)">
+        <option value="" disabled selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      @if (hotelform.controls['number'].errors?.['required'] && hotelform.controls['number'].touched) {
+        <small>No. of seat is required</small>
+       }
+    </div>
+    </div>
+    <div class="form-control">
+      <label for="">Number of persons</label>
+      <div>
+      <select formControlName="person">
+        <option value="" disabled selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      @if (hotelform.controls['person'].errors?.['required'] && hotelform.controls['person'].touched) {
+        <small>Number of person is required</small>
+       }
+    </div>
+    </div>
+    <div class="form-control">
+      <label>Number of children</label>
+      <div>
+      <select formControlName="children">
+        <option value="" disabled selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      @if (hotelform.controls['children'].errors?.['required'] && hotelform.controls['children'].touched) {
+        <small>Number of children is required</small>
+       }
+    </div>
+    </div>
+    <div class="form-control">
+      <label>Food facilities?</label>
+      <div>
+      <select formControlName="restaurant" (change)="facility(hotelform.controls['restaurant'].value)">
+        <option value="" disabled selected>Do you want Food facilities?</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      @if (hotelform.controls['restaurant'].errors?.['required'] && hotelform.controls['restaurant'].touched) {
+        <small>Food Facilities is required</small>
+       }
+    </div>
+    </div>
+    <div class="button-control">
+      <h5>{{ 'Total Cost ( INR ) :' }}</h5>
+      <button id="button">{{finalAmount|currency:'INR'}}</button>
+    </div>
+  </form>
+</div>
+
